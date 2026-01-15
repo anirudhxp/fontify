@@ -1,0 +1,15 @@
+/* Simple Dark Mode via Inversion */
+html {
+    filter: invert(1) hue-rotate(180deg) !important;
+}
+
+/* Re-invert media to keep them looking normal */
+img,
+video,
+picture,
+canvas,
+iframe,
+embed,
+object {
+    filter: invert(1) hue-rotate(180deg) !important;
+}

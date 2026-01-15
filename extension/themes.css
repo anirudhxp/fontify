@@ -1,0 +1,26 @@
+/* Theme Definitions */
+
+/* Dark Mode */
+html.ext-theme-dark {
+    filter: invert(1) hue-rotate(180deg) !important;
+}
+
+html.ext-theme-dark img,
+html.ext-theme-dark video,
+html.ext-theme-dark picture,
+html.ext-theme-dark canvas,
+html.ext-theme-dark iframe,
+html.ext-theme-dark embed,
+html.ext-theme-dark object {
+    filter: invert(1) hue-rotate(180deg) !important;
+}
+
+/* Sepia Mode (Brownish) */
+html.ext-theme-sepia {
+    filter: sepia(0.6) !important;
+}
+
+/* Gray Mode (Grayscale) */
+html.ext-theme-gray {
+    filter: grayscale(1) !important;
+}

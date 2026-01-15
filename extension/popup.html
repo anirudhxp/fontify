@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Changer</title>
+    <link rel="stylesheet" href="popup.css">
+    <!-- Import Playwrite DE Grund -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap"
+        rel="stylesheet">
+    <script src="popup.js" defer></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Enable Fontify</h1>
+        <label class="toggle-wrapper">
+            <input type="checkbox" id="toggleExtension" class="toggle-checkbox">
+            <span class="toggle-slider"></span>
+        </label>
+    </header>
+
+
+
+    <div class="search-box">
+        <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search fonts...">
+    </div>
+
+    <ul id="fontList" class="font-list">
+        <!-- Fonts will be injected here -->
+        <li class="font-item" style="justify-content: center; color: var(--text-secondary); cursor: default;">
+            Loading fonts...
+        </li>
+    </ul>
+
+    <!-- Theme Selector -->
+    <div class="setting-row"
+        style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 16px; padding: 0 4px;">
+        <span style="font-size: 14px; font-weight: 500; color: var(--text-main); margin-bottom: 12px;">Theme</span>
+        <div class="theme-selector" style="display: flex; gap: 16px;">
+            <div class="theme-option">
+                <button class="theme-btn default" data-theme="none"></button>
+                <span class="theme-label">None</span>
+            </div>
+            <div class="theme-option">
+                <button class="theme-btn dark" data-theme="dark"></button>
+                <span class="theme-label">Inverted</span>
+            </div>
+            <div class="theme-option">
+                <button class="theme-btn sepia" data-theme="sepia"></button>
+                <span class="theme-label">Sepia</span>
+            </div>
+            <div class="theme-option">
+                <button class="theme-btn gray" data-theme="gray"></button>
+                <span class="theme-label">Gray</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <span id="statusActive">Active on this page</span>
+        <span id="statusDisabled" style="display: none;">Extension disabled</span>
+    </footer>
+
+    <!-- Template for font item -->
+    <template id="fontItemTemplate">
+        <li class="font-item">
+            <span class="font-name" style="flex: 1;"></span>
+            <span class="font-badge"
+                style="margin-left: 8px; font-size: 10px; padding: 2px 6px; border-radius: 10px; font-weight: 600; white-space: nowrap;"></span>
+            <span class="check-icon-wrapper" style="display: none; margin-left: 8px;">
+                <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </span>
+        </li>
+    </template>
+</body>
+
+</html>
