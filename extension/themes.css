@@ -11,7 +11,9 @@ html.ext-theme-dark picture,
 html.ext-theme-dark canvas,
 html.ext-theme-dark iframe,
 html.ext-theme-dark embed,
-html.ext-theme-dark object {
+html.ext-theme-dark object,
+html.ext-theme-dark svg,
+html.ext-theme-dark [style*="background-image"] {
     filter: invert(1) hue-rotate(180deg) !important;
 }
 

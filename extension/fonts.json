@@ -14,20 +14,10 @@
         "type": "google",
         "url": "@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');"
     },
-    "lato": {
-        "name": "Lato",
-        "type": "google",
-        "url": "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');"
-    },
     "playwriteDeGrund": {
         "name": "Playwrite DE Grund",
         "type": "google",
         "url": "@import url('https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap');"
-    },
-    "arvo": {
-        "name": "Arvo",
-        "type": "google",
-        "url": "@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap');"
     },
     "crimsonPro": {
         "name": "Crimson Pro",
@@ -38,6 +28,46 @@
         "name": "Fredoka",
         "type": "google",
         "url": "@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');"
+    },
+    "montserrat": {
+        "name": "Montserrat",
+        "type": "google",
+        "url": "@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');"
+    },
+    "poppins": {
+        "name": "Poppins",
+        "type": "google",
+        "url": "@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&display=swap');"
+    },
+    "playfairDisplay": {
+        "name": "Playfair Display",
+        "type": "google",
+        "url": "@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&display=swap');"
+    },
+    "merriweather": {
+        "name": "Merriweather",
+        "type": "google",
+        "url": "@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300..900&display=swap');"
+    },
+    "outfit": {
+        "name": "Outfit",
+        "type": "google",
+        "url": "@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');"
+    },
+    "lexend": {
+        "name": "Lexend",
+        "type": "google",
+        "url": "@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');"
+    },
+    "spaceGrotesk": {
+        "name": "Space Grotesk",
+        "type": "google",
+        "url": "@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');"
+    },
+    "manrope": {
+        "name": "Manrope",
+        "type": "google",
+        "url": "@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');"
     },
     "arial": {
         "name": "Arial",

@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Fontify",
-    "version": "1.0",
+    "version": "1.1",
     "description": "Customize any website with your favorite fonts and themes. Includes Dark, Sepia, and Grayscale modes for better readability.",
     "permissions": [
         "activeTab",

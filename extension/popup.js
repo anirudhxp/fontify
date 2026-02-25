@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const li = document.createElement('li');
             li.className = 'font-item';
             li.style.justifyContent = 'center';
-            li.style.color = 'var(--text-secondary)';
+            li.style.color = 'var(--pico-muted-color)';
             li.style.cursor = 'default';
             li.textContent = 'No fonts found';
             fontList.appendChild(li);
@@ -175,10 +175,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             const li = clone.querySelector('.font-item');
             const nameSpan = clone.querySelector('.font-name');
             const badgeSpan = clone.querySelector('.font-badge');
-            const checkWrapper = clone.querySelector('.check-icon-wrapper');
+            const radio = clone.querySelector('.font-radio');
 
             nameSpan.textContent = font.name;
-            nameSpan.style.fontFamily = font.name;
 
             // Badge logic
             if (font.type === 'google') {
@@ -191,16 +190,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                 badgeSpan.style.color = '#374151'; // Gray 700
             }
 
-            // Compare with key
+            // Selection logic
             if (state.selectedFont === font.key) {
-                li.classList.add('selected');
-                checkWrapper.style.display = 'block';
+                radio.checked = true;
             }
 
-            li.addEventListener('click', () => {
-                state.selectedFont = font.key; // Store key
+            // Event listener
+            radio.addEventListener('change', () => {
+                state.selectedFont = font.key;
                 saveState();
-                renderFonts(); // Re-render to update selection
+                // No need to re-render immediately if using radios, 
+                // but checking ensures only one is active relative to state if we had complex logic.
+                // For now, let's keep it simple.
             });
 
             fontList.appendChild(li);
