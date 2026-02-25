@@ -4,137 +4,416 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fontify - Customize Your Web</title>
-    <link rel="stylesheet" href="landing.css">
-    <!-- Import Fonts for Showcase -->
+    <title>Fontify v1.1 - Minimal Web Customizer</title>
+    <!-- Showcase Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&family=Roboto&family=Open+Sans&family=Lato&family=Playwrite+DE+Grund&family=Arvo&family=Crimson+Pro&family=Fredoka&family=JetBrains+Mono&family=Fira+Code&family=DM+Sans&family=Bricolage+Grotesque&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Pico Lime Dark Palette - Adjusted for Glass/Dark */
+            --bg: #0a0a0a;
+            --bg-panel: rgba(23, 23, 23, 0.4);
+            --bg-hover: rgba(38, 38, 38, 0.6);
+            --text-main: #c2c7d0;
+            --text-muted: #8b95a5;
+            --primary: #a5d601;
+            --primary-hover: #b2e51a;
+            --primary-bg-focus: rgba(130, 171, 0, 0.18);
+
+            --radius: 8px;
+            --font-sans: 'Parkinsans', system-ui, sans-serif;
+            --glass-blur: blur(16px);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.5;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            position: relative;
+            z-index: 0;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            /* Forest Emerald Background */
+            background-image: radial-gradient(circle at 50% 50%,
+                    rgba(34, 197, 94, 0.18) 0%,
+                    rgba(34, 197, 94, 0.1) 25%,
+                    rgba(34, 197, 94, 0.04) 35%,
+                    transparent 50%);
+            background-size: 100% 100%;
+            pointer-events: none;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        a:hover {
+            color: var(--primary-hover);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 0 20px;
+            margin-bottom: 32px;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 18px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge {
+            background: var(--primary-bg-focus);
+            color: var(--primary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .btn {
+            background: var(--bg-panel);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: var(--radius);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn:not(.btn-primary):hover {
+            background: var(--bg-hover);
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 36px;
+            color: #fff;
+            margin-bottom: 12px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: 500;
+            margin-top: 56px;
+        }
+
+        h3 {
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .lead {
+            color: var(--text-muted);
+            font-size: 16px;
+            max-width: 600px;
+        }
+
+        /* Layout Grids */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .font-list-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-panel);
+            border-radius: var(--radius);
+            padding: 24px;
+            transition: transform 0.2s ease, background 0.2s ease;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .card:hover {
+            background: var(--bg-hover);
+            transform: translateY(-2px);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        /* Lists */
+        ul.changelog {
+            list-style: none;
+        }
+
+        ul.changelog li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        ul.changelog li:last-child {
+            margin-bottom: 0;
+        }
+
+        ul.changelog li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        ul.changelog strong {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* Font Tag Name */
+        .font-tag {
+            background: var(--bg-panel);
+            padding: 10px 14px;
+            border-radius: var(--radius);
+            color: var(--text-main);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            transition: background 0.2s ease;
+        }
+
+        .font-tag:hover {
+            background: var(--bg-hover);
+        }
+
+        .font-tag span {
+            font-size: 11px;
+            color: var(--text-muted);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        /* Themes */
+        .theme-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+        }
+
+        .theme-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .t-dark {
+            background: #0f1114;
+        }
+
+        .t-sepia {
+            background: #f4ecd8;
+        }
+
+        .t-gray {
+            background: #4a4d52;
+        }
+
+        /* Footer */
+        footer {
+            padding: 24px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 64px;
+            margin-bottom: 32px;
+            opacity: 0.7;
+        }
+
+        .btn-primary {
+            font-family: var(--font-sans);
+        }
+    </style>
 </head>
 
 <body>
-
-    <div class="bg-glow"></div>
-    <div class="bg-glow-2"></div>
-
     <div class="container">
+        <!-- Header -->
         <header>
-            <div class="logo">Fontify</div>
-            <div class="version-badge">v1.0.0</div>
+            <div class="logo">Fontify <span class="badge">v1.1</span></div>
+            <div style="display: flex; gap: 8px;">
+                <button
+                    onclick="window.location.href = 'https://chromewebstore.google.com/detail/fontify/mnigmpenegoankdngcmmkkokoefcnglf'"
+                    class="btn btn-primary">Add to Browser</button>
+            </div>
         </header>
 
-        <section class="hero">
-            <h1>Make the Web Yours Again</h1>
-            <p>Transform your reading experience with custom fonts and themes on any website. Simple, private, and
-                powerful.</p>
-            <a href="#" class="cta-btn">Add to Browser</a>
+        <!-- Hero -->
+        <section>
+            <h1>Read the web your way.</h1>
+            <p class="lead">Change fonts and colors on any website. Fontify remembers your choices so you don't have to
+                change them again.</p>
         </section>
 
-        <section class="features">
-            <h2 class="section-title">Features</h2>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                        </svg>
-                    </div>
-                    <h3>Per-Site Control</h3>
-                    <p>Customize fonts and themes individually for each website. Your settings are saved automatically.
-                    </p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M4 7V4h16v3M9 20h6M12 4v16"></path>
-                        </svg>
-                    </div>
-                    <h3>Premium Fonts</h3>
-                    <p>Access a curated library of high-quality Google Fonts and System fonts for the best readability.
-                    </p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
-                    </div>
-                    <h3>Reading Themes</h3>
-                    <p>Switch between Dark, Sepia, and Gray modes to reduce eye strain day or night.</p>
-                </div>
+        <!-- Changelog -->
+        <section>
+            <h2>What's New in v1.1</h2>
+            <div class="card">
+                <ul class="changelog">
+                    <li><strong>More Fonts:</strong> We added clean, modern fonts like JetBrains Mono and DM Sans.</li>
+                    <li><strong>Better Colors:</strong> The dark mode looks sharper and clearer.</li>
+                    <li><strong>Smarter Dark Mode:</strong> Pictures and videos stay normal while the rest of the page
+                        turns dark.</li>
+                    <li><strong>Faster Speed:</strong> Everything loads much quicker now.</li>
+                </ul>
             </div>
         </section>
-    </div>
 
-    <section class="font-showcase">
-        <div class="container">
-            <h2 class="section-title">Available Fonts</h2>
-            <div class="font-grid">
-                <div class="font-card">
-                    <div class="font-preview" style="font-family: 'Inter', sans-serif;">Aa</div>
-                    <div class="font-name">Inter</div>
+        <!-- Features -->
+        <section>
+            <h2>Why use Fontify?</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Remembers Your Choices</h3>
+                    <p>Pick your favorite look for a website, and we save it for next time.</p>
                 </div>
-                <div class="font-card">
-                    <div class="font-preview" style="font-family: 'Roboto', sans-serif;">Aa</div>
-                    <div class="font-name">Roboto</div>
-                </div>
-                <div class="font-card">
-                    <div class="font-preview" style="font-family: 'Open Sans', sans-serif;">Aa</div>
-                    <div class="font-name">Open Sans</div>
-                </div>
-                <div class="font-card">
-                    <div class="font-preview" style="font-family: 'Playwrite DE Grund', cursive;">Aa</div>
-                    <div class="font-name">Playwrite</div>
-                </div>
-                <div class="font-card">
-                    <div class="font-preview" style="font-family: 'JetBrains Mono', monospace;">Aa</div>
-                    <div class="font-name">JetBrains Mono</div>
-                </div>
-                <div class="font-card">
-                    <div class="font-preview" style="font-family: 'Crimson Pro', serif;">Aa</div>
-                    <div class="font-name">Crimson Pro</div>
-                </div>
-                <div class="font-card">
-                    <div class="font-preview" style="font-family: 'Bricolage Grotesque', sans-serif;">Aa</div>
-                    <div class="font-name">Bricolage</div>
-                </div>
-                <div class="font-card">
-                    <div class="font-preview" style="font-family: 'DM Sans', sans-serif;">Aa</div>
-                    <div class="font-name">DM Sans</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="container">
-        <section class="themes-section">
-            <h2 class="section-title">Visual Themes</h2>
-            <div class="theme-preview-container">
-                <div class="theme-card default">
-                    <span>Default</span>
-                </div>
-                <div class="theme-card dark">
-                    <span>Inverted</span>
-                </div>
-                <div class="theme-card sepia">
-                    <span>Sepia</span>
-                </div>
-                <div class="theme-card gray">
-                    <span>Gray</span>
+                <div class="card">
+                    <h3>Total Privacy</h3>
+                    <p>No tracking or analytics. Everything stays strictly on your computer.</p>
                 </div>
             </div>
         </section>
 
+        <!-- Fonts -->
+        <section>
+            <h2>21 Fonts Included</h2>
+            <div class="font-list-grid">
+                <div class="font-tag">Inter <span>Google</span></div>
+                <div class="font-tag">Roboto <span>Google</span></div>
+                <div class="font-tag">Open Sans <span>Google</span></div>
+                <div class="font-tag">Playwrite DE Grund <span>Google</span></div>
+                <div class="font-tag">Crimson Pro <span>Google</span></div>
+                <div class="font-tag">Fredoka <span>Google</span></div>
+                <div class="font-tag">Montserrat <span>Google</span></div>
+                <div class="font-tag">Poppins <span>Google</span></div>
+                <div class="font-tag">Playfair Display <span>Google</span></div>
+                <div class="font-tag">Merriweather <span>Google</span></div>
+                <div class="font-tag">Outfit <span>Google</span></div>
+                <div class="font-tag">Lexend <span>Google</span></div>
+                <div class="font-tag">Space Grotesk <span>Google</span></div>
+                <div class="font-tag">Manrope <span>Google</span></div>
+                <div class="font-tag">JetBrains Mono <span>Google</span></div>
+                <div class="font-tag">Fira Code <span>Google</span></div>
+                <div class="font-tag">DM Sans <span>Google</span></div>
+                <div class="font-tag">Bricolage Grotesque <span>Google</span></div>
+                <div class="font-tag">Arial <span>System</span></div>
+                <div class="font-tag">Helvetica <span>System</span></div>
+                <div class="font-tag">Times New Roman <span>System</span></div>
+                <div class="font-tag">Courier New <span>System</span></div>
+            </div>
+        </section>
+
+        <!-- Themes -->
+        <section>
+            <h2>3 Reading Themes</h2>
+            <div class="grid-3">
+                <div class="card theme-item">
+                    <div class="theme-circle t-dark"></div>
+                    <div>
+                        <h3>Dark Mode</h3>
+                        <p style="margin-top: 0">Easy on the eyes.</p>
+                    </div>
+                </div>
+                <div class="card theme-item">
+                    <div class="theme-circle t-sepia"></div>
+                    <div>
+                        <h3>Sepia Mode</h3>
+                        <p style="margin-top: 0">Feels like an old book.</p>
+                    </div>
+                </div>
+                <div class="card theme-item">
+                    <div class="theme-circle t-gray"></div>
+                    <div>
+                        <h3>Gray Mode</h3>
+                        <p style="margin-top: 0">Simple and neutral.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
         <footer>
-            <p>&copy; 2026 Fontify. All rights reserved.</p>
+            Fontify &copy; 2026.
         </footer>
     </div>
-
 </body>
 
 </html>
